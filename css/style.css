@@ -1,12 +1,13 @@
 
 body {
+  background-color: black;
   display: flex;
   margin: 0;
   justify-content: center;
 }
 
 .cell {
-  border: 2px solid black;
+  border: 5px solid black;
   height: 150px;
   width: 150px;
   text-align: center;
@@ -17,13 +18,36 @@ body {
   margin: 0;
 }
 
+.cell:hover {
+  background-color: lightgrey;
+}
+
 .grid {
-  background-color: red;
+  background-color: white;
   /* position: absolute; */
   left: 5%;
   top: 100px;
-  /* width: 80%; */
+
   border-collapse: collapse;
   margin: 100px auto;
   cursor: pointer;
+}
+
+.controlPanel {
+  background-color: grey;
+  overflow: auto;
+  position: relative;
+  margin-right: 5px;
+  margin-top: 104px;
+  width: 20%;
+  height: 472px;
+  cursor: pointer;
+}
+
+.endGameMsg {
+  top: 236px;
+  left: 10%;
+  margin: 110px, auto;
+  background-color: blue;
+  opacity: 30%;
 }

@@ -18,6 +18,20 @@
   </div>
   <!-- The actual game grid -->
   <div class="grid" id="board">
+
+    <!-- Winning message -->
+    <div class="endGameMsg" id="endGame" hidden>
+      <div class="playerOneWinMsg">
+        <h1>Player One Wins!</h1>
+      </div>
+      <div class="playerTwoWinMsg">
+        <h1>Player Two Wins!</h1>
+      </div>
+      <div class="drawMsg"
+      <h1>It's a draw!</h1>
+    </div>
+  </div>
+
     <div>
       <div class="cell" id="0"></div><div class="cell" id="1"></div><div class="cell" id="2"></div>
     </div>
@@ -31,12 +45,16 @@
 
   <!-- Right hand side control panel for selectors and game info -->
   <div class="controlPanel">
+    <div class="playerOneScore">
+    </div>
+    <div class="playerTwoScore">
+    </div>
+    <button id="restartButton">PLAY AGAIN</button>
   </div>
 
-  <!-- Winning message -->
-  <div class="endGameMsg" id="endGameMsg">
 
-    <button id="restartButton">Restart</button>
-  </div>
+
+
+
 </body>
 </html>
