@@ -7,7 +7,7 @@
   <title>Tic Tac Toe</title>
 
   <script src="js/jquery.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main-ai.js"></script>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -21,16 +21,19 @@
 
     <!-- Winning message -->
     <div class="endGameMsg" id="endGame" hidden>
-      <div class="playerOneWinMsg">
-        <h1>Player One Wins!</h1>
-      </div>
-      <div class="playerTwoWinMsg">
-        <h1>Player Two Wins!</h1>
-      </div>
-      <div class="drawMsg"
-      <h1>It's a draw!</h1>
+      <div id="centerWrapper">
+        <div class="playerOneWinMsg" id="pOneWin" hidden>
+          <h1>Player One Wins!</h1>
+        </div>
+        <div class="playerTwoWinMsg" id="pTwoWin" hidden>
+          <h1>Player Two Wins!</h1>
+        </div>
+        <div class="drawMsg" id="drawMsg" hidden>
+          <h1>It's a draw!</h1>
+        </div>
+        <button class="restartButton" id="restartButton" hidden>PLAY AGAIN</button>
+      </div> <!-- end of #centerWrapper -->
     </div>
-  </div>
 
     <div>
       <div class="cell" id="0"></div><div class="cell" id="1"></div><div class="cell" id="2"></div>
@@ -49,12 +52,8 @@
     </div>
     <div class="playerTwoScore">
     </div>
-    <button id="restartButton">PLAY AGAIN</button>
+
   </div>
-
-
-
-
 
 </body>
 </html>
