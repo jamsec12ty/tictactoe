@@ -47,6 +47,7 @@ body {
 .endGameMsg {
   top: 236px;
   left: 10%;
+  position: absolute;
   margin: 110px, auto;
   background-color: blue;
   opacity: 30%;

@@ -1,10 +1,15 @@
+let currentTurn = "X"; //sets player initial value
+let playerOneScore = 0;
+let playerTwoScore = 0;
+let turnCounter = 0;//
+const playerOne = 'X';
+const playerTwo = 'O';
+let gameIsOver = false; //starting point (game not over when we start game)
 
 $(document).ready(function(){
 
   console.log('Tic Tac Toe');
 
-const playerOne = 'X';
-const playerTwo = 'O';
 // const winCombo = [
 //     [0, 1, 2],
 //     [3, 4, 5],
@@ -16,8 +21,6 @@ const playerTwo = 'O';
 //     [2, 4, 6],
 // ];
 
-let currentTurn = "O"; //sets player initial value
-let turnCounter = 0;//
 
   // Do something whenever the user clicks on the game board
   // $('#board').click( fn ); <-- shortcut convenience method
@@ -27,10 +30,10 @@ let turnCounter = 0;//
     // The function will re-run EACH click
 
 
-      const contents = $(this).html(); //check contents of cell
+      const contents = $(this).html(); //get contents of cell
 
       //test if cell contains X or O in it.
-      if (contents === "X" || contents === "O"){
+      if (contents === "X" || contents === "O" || gameIsOver){
       //leave the function early if the cell is occupied, which prevents the turn taking code and turn switching code from being executed.
       return;
 
@@ -57,20 +60,31 @@ let turnCounter = 0;//
 
   {
     // console.log(currentTurn);
-    console.log("End of Game!");
+    // console.log("End of Game!");
+    if (currentTurn === "X") {
+      console.log("playerOneWinMsg");
+      playerOneScore += 1;
 
+
+
+
+
+    } else {
+      console.log("playerTwoWinMsg");
+      playerTwoScore += 1;
+
+    }
+
+    gameIsOver = true;
+    $("#endGame").show();
     // document.getElementById("endGame").style.zIndex = "-1";
 
   } else if(turnCounter === 9){
     console.log("DRAW");
+    gameIsOver = true;
   }
 
 
-  // if (currentTurn === "X") {
-  //   console.log("playerOneWinMsg");
-  // } else if (currentTurn === "O"){
-  //   console.log("playerTwoWinMsg");
-  // }
 
 
   //turn switching code
@@ -94,6 +108,8 @@ let turnCounter = 0;//
     // The function will re-run EACH click
     $(".cell").html("");
     turnCounter = 0;
+    gameIsOver = false;
+    $("#endGame").hide();
     console.log('Restart button clicked!');
   });
 
