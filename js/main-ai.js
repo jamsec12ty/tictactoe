@@ -15,15 +15,22 @@ $(document).ready(function(){
 const checkWin = function(){
   const cell0 = $("#0").html();
   const cell1 = $("#1").html();
+  const cell2 = $("#2").html();
+  const cell3 = $("#3").html();
+  const cell4 = $("#4").html();
+  const cell5 = $("#5").html();
+  const cell6 = $("#6").html();
+  const cell7 = $("#7").html();
+  const cell8 = $("#8").html();
 
-    if ((cell0 !== "" && cell0 === $("#1").html() && $("#1").html() === $("#2").html()) ||
-       ($("#3").html() !== "" && $("#3").html() === $("#4").html() && $("#4").html() === $("#5").html()) ||
-       ($("#6").html() !== "" && $("#6").html() === $("#7").html() && $("#7").html() === $("#8").html()) ||
-       (cell0 !== "" && cell0 === $("#3").html() && $("#3").html() === $("#6").html()) ||
-       ($("#1").html() !== "" && $("#1").html() === $("#4").html() && $("#4").html() === $("#7").html()) ||
-       ($("#2").html() !== "" && $("#2").html() === $("#5").html() && $("#5").html() === $("#8").html()) ||
-       (cell0 !== "" && cell0 === $("#4").html() && $("#4").html() === $("#8").html()) ||
-       ($("#2").html() !== "" && $("#2").html() === $("#4").html() && $("#4").html() === $("#6").html()))
+    if ((cell0 !== "" && cell0 === cell1 && cell1 === cell2) ||
+       (cell3 !== "" && cell3 === cell4 && cell4 === cell5) ||
+       (cell6 !== "" && cell6 === cell7 && cell7 === cell8) ||
+       (cell0 !== "" && cell0 === cell3 && cell3 === cell6) ||
+       (cell1 !== "" && cell1 === cell4 && cell4 === cell7) ||
+       (cell2 !== "" && cell2 === cell5 && cell5 === cell8) ||
+       (cell0 !== "" && cell0 === cell4 && cell4 === cell8) ||
+       (cell2 !== "" && cell2 === cell4 && cell4 === cell6))
 
     {
       // console.log(currentTurn);
@@ -82,8 +89,11 @@ const checkWin = function(){
     turnCounter += 1; //add 1 to turn counter after each turn
 
     //Check if turn caused the game to be won.
-    checkWin();
 
+    if (!gameIsOver){
+      console.log(gameIsOver)
+      checkWin();
+    };
     // console.log(turnCounter);
 
 
@@ -121,9 +131,12 @@ console.log(randomCell);//reads the contents of blank cells array.
 
 $(randomCell).html("O");
 
-
+turnCounter += 1;
+console.log(turnCounter);
 //3. check again for a winner - maybe move winner check code into function
-checkWin();
+if (!gameIsOver){
+  checkWin();
+};
 
 //4. switch player back to human
 
