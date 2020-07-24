@@ -61,10 +61,30 @@ const checkWin = function(){
         $("#drawMsg").show();
         $("#restartButton").show();
     }
+};//checkWin
 
 
+const aiMoveRand = function(){
 
-};
+  let blankCells = []; //create empty array variable as starting point.
+  let allCells = $(".cell"); // create variable to represent values of all cells.
+
+  for(const singleCell of allCells){ //loop through all cells and create an array of the empty cells with no html in them
+    if ($(singleCell).html() === "" ){
+      blankCells.push(singleCell);// push single cells into blank cells array.
+    }
+  }
+
+  //2. choose a random cell from the array and play the computer move into that cell
+  let randomNumber = Math.floor(Math.random() * blankCells.length);
+  //grabs index of blank cells array.
+
+  let randomCell = blankCells[randomNumber];
+  //reads the contents of blank cells array.
+
+  $(randomCell).html("O");
+
+}; //aiMoveRand
 
 
   // Do something whenever the user clicks on the game board
@@ -73,11 +93,11 @@ const checkWin = function(){
     const activeCell = $(this).attr('id');
     // This code will run whenever the #board element is clicked
     // The function will re-run EACH click
+    const contents = $(this).html(); //get contents of cell
 
-      const contents = $(this).html(); //get contents of cell
+    //test if cell contains X or O in it.
+    if (contents === "X" || contents === "O" || gameIsOver){
 
-      //test if cell contains X or O in it.
-      if (contents === "X" || contents === "O" || gameIsOver){
       //leave the function early if the cell is occupied, which prevents the turn taking code and turn switching code from being executed.
       return;
 
@@ -94,54 +114,45 @@ const checkWin = function(){
       console.log(gameIsOver)
       checkWin();
     };
-    // console.log(turnCounter);
+
+    currentTurn = "O";
 
 
-  currentTurn = "O";
+  //PLAY AI MOVE HERE
+  //1. find all available free cells and store in array
 
+  console.log($(".cell"));
 
-//PLAY AI MOVE HERE
-//1. find all available free cells and store in array
+  const cell0 = $("#0").html();
+  const cell1 = $("#1").html();
+  const cell2 = $("#2").html();
+  const cell3 = $("#3").html();
+  const cell4 = $("#4").html();
+  const cell5 = $("#5").html();
+  const cell6 = $("#6").html();
+  const cell7 = $("#7").html();
+  const cell8 = $("#8").html();
 
-console.log($(".cell"));
+  if (cell4 === ""){
+   $("#4").html("O");
+  }else{
+    aiMoveRand();
+  };
 
+  turnCounter += 1;
+  console.log(turnCounter);
+  //3. check again for a winner - maybe move winner check code into function
+  if (!gameIsOver){
+    checkWin();
+  };
 
-let blankCells = []; //create empty array variable as starting point.
-let allCells = $(".cell"); // create variable to represent values of all cells.
+  //4. switch player back to human
 
-for(const singleCell of allCells){ //loop through all cells and create an array of the empty cells with no html in them
-  if ($(singleCell).html() === "" ){
-    blankCells.push(singleCell);// push single cells into blank cells array.
-  }
-}
-console.log(blankCells);
-
-
-//2. choose a random cell from the array and play the computer move into that cell
-
-let randomNumber = Math.floor(Math.random() * blankCells.length);
-
-console.log(randomNumber);//grabs index of blank cells array.
-
-let randomCell = blankCells[randomNumber];
-console.log(randomCell);//reads the contents of blank cells array.
-
-$(randomCell).html("O");
-
-turnCounter += 1;
-console.log(turnCounter);
-//3. check again for a winner - maybe move winner check code into function
-if (!gameIsOver){
-  checkWin();
-};
-
-//4. switch player back to human
-
-currentTurn = "X";
+  currentTurn = "X";
 
 
 
-    // console.log(activeCell);
+      // console.log(activeCell);
   });//end click function
 
 
