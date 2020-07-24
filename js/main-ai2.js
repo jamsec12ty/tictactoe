@@ -38,6 +38,7 @@ const checkWin = function(){
       if (currentTurn === "X") {
         console.log("player one wins!");
         playerOneScore += 1;
+        console.log(playerOneScore);
         $().css("playerOneWinMsg");
         $("#pOneWin").show();
 
@@ -45,6 +46,7 @@ const checkWin = function(){
       } else {
         console.log("player two wins!");
         playerTwoScore += 1;
+        console.log(playerTwoScore);
         $().css("playerTwoWinMsg");
         $("#pTwoWin").show();
       }
